@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+maestro[qwen_2_5_vl]==1.1.0rc2
+supervision==0.26.0rc4
+Pillow
+numpy 
