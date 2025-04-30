@@ -17,7 +17,9 @@ def process_single_image(image_path: str):
     label_annotator = sv.LabelAnnotator(color_lookup=sv.ColorLookup.INDEX)
 
     try:
-        PROMPT = """Outline the position of all the person that are working on some height and output all the coordinates in STRICTLY in JSON format."""
+        # PROMPT = """Outline the position of all the person that are working on some height and output all the coordinates in STRICTLY in JSON format."""
+        PROMPT = """Detect and outline the position of all persons working at height. Additionally, identify if any worker is (1) smoking a cigarette or (2) using a mobile phone. Output all relevant coordinates and detected actions STRICTLY in JSON format."""
+
 
         # Load image
         image = Image.open(image_path)
