@@ -1,6 +1,13 @@
 fastapi
 uvicorn
 maestro[qwen_2_5_vl]==1.1.0rc2
-supervision==0.26.0rc4
-Pillow
-numpy 
+supervision
+Pillow==11.2.1
+numpy==1.24.1
+torch==2.7.0
+torchvision==0.22.0
+torchaudio
+qwen-vl-utils==0.0.11
+transformers==4.51.3
+peft==0.15.2
+scipy==1.15.2
