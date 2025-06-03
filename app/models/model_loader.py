@@ -20,6 +20,8 @@ processor, model = load_model(
     max_pixels=MAX_PIXELS
 )
 
+
+
 def run_qwen_2_5_vl_inference(
     model,
     processor,
