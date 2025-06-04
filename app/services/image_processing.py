@@ -9,7 +9,7 @@ import json
 
 OUTPUT_DIR = "output"
 SYSTEM_MESSAGE = None
-COMMON_SIZE = (1024, 1024)  # You can change this to your model's expected input size
+COMMON_SIZE = (1000, 1000)  # You can change this to your model's expected input size
 
 if not os.path.exists(OUTPUT_DIR):
     os.makedirs(OUTPUT_DIR)
@@ -20,7 +20,9 @@ def process_single_image(image_path: str, violation: str):
     label_annotator = sv.LabelAnnotator(color_lookup=sv.ColorLookup.INDEX)
 
     try:
-        PROMPT = """Detect and outline the position of all persons involved in the following activities: (1) Lift_and_Hoist: activities involving lifting or hoisting heavy materials using mechanical devices, and (2) Work at Height: individuals performing tasks at elevated positions that require safety measures. For each detected person, specify the activity (either 'Lift_and_Hoist' or 'Work at Height'), and output all relevant coordinates and detected actions STRICTLY in JSON format."""
+        #PROMPT = """Detect and outline the position of all persons involved in the following activities: **(1) Lift_and_Hoist: activities involving lifting or hoisting heavy materials using mechanical devices**, and (2) **Work at Height: individuals performing tasks at elevated positions that require safety measures**. For each detected person, specify the activity (either 'Lift_and_Hoist' or 'Work at Height'), and output all relevant coordinates and detected actions STRICTLY in JSON format."""
+        #PROMPT = "Detect and outline the position of all persons involved in the following activities: **(1) Lift_and_Hoist: activities involving lifting or hoisting heavy materials using mechanical devices**, and (2) **Work at Height: individuals performing tasks at elevated positions that require safety measures**. For each detected person, specify the activity (either 'Lift_and_Hoist' or 'Work at Height'), and output all relevant coordinates and detected actions STRICTLY in JSON format."
+        PROMPT = """ Detect and outline the position of all persons (1.) Working at height at the edge of a structure , where the activity seems dangerous , and ,(2.)Additionally, identify if any worker is lifting or hoisting heavy materials. **output all relevant coordinates and detected actions STRICTLY in JSON format.** """
         # Load and resize image
         image = Image.open(image_path)
         original_size = image.size
