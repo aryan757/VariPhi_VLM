@@ -22,7 +22,8 @@ def process_single_image(image_path: str, violation: str):
     label_annotator = sv.LabelAnnotator(color_lookup=sv.ColorLookup.INDEX)
 
     try:
-        PROMPT = """ Detect and outline the position ONLY Those persons who are (1.) Working at height at the edge of a structure , where the activity seems dangerous , and ,(2.)Additionally, identify if any worker is lifting or hoisting heavy materials. **output all relevant coordinates and detected actions STRICTLY in JSON format.** """
+        #PROMPT = """ Detect and outline the position ONLY Those persons who are (1.) Working at height at the edge of a structure , where the activity seems dangerous , and ,(2.)Additionally, identify if any worker is lifting or hoisting heavy materials. **output all relevant coordinates and detected actions STRICTLY in JSON format.** """
+        PROMPT = """ Detect and outline the position ONLY Vehicles **output all relevant coordinates and detected actions STRICTLY in JSON format.** """
         # Load and resize image
         if image_path.startswith('http') or image_path.startswith('https'):
             response_img = requests.get(image_path)
@@ -42,6 +43,7 @@ def process_single_image(image_path: str, violation: str):
             prompt=PROMPT,
             system_message = SYSTEM_MESSAGE
         )
+        
         print(f"Results for {image_path}:")
         print(response)
         # Clean up the response if needed
